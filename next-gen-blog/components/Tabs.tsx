@@ -16,23 +16,37 @@ const Tabs = ({ categories, handleOnSearch }: IPropType) => {
     
     return (
         <div className='my-8 flex items-center justify-between border-b-2 border-gray-100'>
-            <ul className='flex items-center'>
-                <li className={'mr-6 pb-6 border-b-4 rounded-sm ' + `${router.pathname == '/' ? 'border-primary text-primary' : 'border-white text-gray-400'
-                    }`}>
-                    <Link href="#">
-                        Recent
-                    </Link>
+            <ul className="flex items-center">
+                <li
+                    className={
+                        'mr-6 pb-6 border-b-4 rounded-sm ' +
+                        `${
+                            router.pathname === '/'
+                                ? 'border-primary text-primary'
+                                : 'border-white text-gray-400'
+                        }`
+                    }>
+                    <Link href="/">Recent</Link>
                 </li>
-                {
-                    categories.map(category => {
-                        return (
-                            <li key={category.id} className='mr-6 pb-6 border-b-4 rounded-sm'>
-                                <Link href='#'>{category.attributes.Title}</Link>
-                            </li>
-
-                        )
-                    })
-                }
+                {categories.map((category) => {
+                    return (
+                        <li
+                            key={category.id}
+                            className={
+                                'mr-6 pb-6 border-b-4 rounded-sm ' +
+                                `${
+                                    isActiveLink(category)
+                                        ? 'border-primary text-primary'
+                                        : 'border-white text-gray-400'
+                                }`
+                            }>
+                            <Link
+                                href={`/category/${category.attributes.Slug}`}>
+                                {category.attributes.Title}
+                            </Link>
+                        </li>
+                    );
+                })}
             </ul>
             <div className="flex items-center">
                 <svg
