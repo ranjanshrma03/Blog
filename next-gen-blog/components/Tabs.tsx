@@ -3,16 +3,17 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { ICategory } from '../types';
 
-interface IPropTypes {
+interface IPropType {
     categories: ICategory[];
+    handleOnSearch: (query: string) => void;
 }
-
-const Tabs = ({ categories }: IPropTypes) => {
-
+const Tabs = ({ categories, handleOnSearch }: IPropType) => {
     const router = useRouter();
-    console.log(router)
 
-
+    const isActiveLink = (category: ICategory) => {
+        return category.attributes.Slug === router.query.category;
+    };
+    
     return (
         <div className='my-8 flex items-center justify-between border-b-2 border-gray-100'>
             <ul className='flex items-center'>
