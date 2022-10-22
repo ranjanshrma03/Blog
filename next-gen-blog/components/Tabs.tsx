@@ -13,17 +13,16 @@ const Tabs = ({ categories, handleOnSearch }: IPropType) => {
     const isActiveLink = (category: ICategory) => {
         return category.attributes.Slug === router.query.category;
     };
-    
+
     return (
         <div className='my-8 flex items-center justify-between border-b-2 border-gray-100'>
             <ul className="flex items-center">
                 <li
                     className={
                         'mr-6 pb-6 border-b-4 rounded-sm ' +
-                        `${
-                            router.pathname === '/'
-                                ? 'border-primary text-primary'
-                                : 'border-white text-gray-400'
+                        `${router.pathname === '/'
+                            ? 'border-primary text-primary'
+                            : 'border-white text-gray-400'
                         }`
                     }>
                     <Link href="/">Recent</Link>
@@ -34,10 +33,9 @@ const Tabs = ({ categories, handleOnSearch }: IPropType) => {
                             key={category.id}
                             className={
                                 'mr-6 pb-6 border-b-4 rounded-sm ' +
-                                `${
-                                    isActiveLink(category)
-                                        ? 'border-primary text-primary'
-                                        : 'border-white text-gray-400'
+                                `${isActiveLink(category)
+                                    ? 'border-primary text-primary'
+                                    : 'border-white text-gray-400'
                                 }`
                             }>
                             <Link
